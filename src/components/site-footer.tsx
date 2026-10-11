@@ -4,7 +4,7 @@ import { Logo } from "@/components/logo"
 import { site } from "@/lib/site"
 
 const columns = [
-  { title: "Company", links: site.nav },
+  { title: "Company", links: site.nav.filter((item) => item.href !== "/what-is-aeo") },
   { title: "Learn", links: [{ label: "What is AEO?", href: "/what-is-aeo" }, { label: "FAQ", href: "/#faq" }] },
   { title: "Get started", links: [site.cta, { label: "Contact", href: "/contact" }] },
 ]

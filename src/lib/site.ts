@@ -10,6 +10,7 @@ export const site = {
     { label: "Services", href: "/services" },
     { label: "How it works", href: "/how-it-works" },
     { label: "Pricing", href: "/pricing" },
+    { label: "Guide", href: "/what-is-aeo" },
   ],
   cta: { label: "Free AI audit", href: "/audit" },
 }
