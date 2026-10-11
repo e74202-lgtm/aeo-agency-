@@ -36,6 +36,7 @@ const pillars: { id: string; label: string; title: string; intro: string; servic
     services: [
       { name: "Citation building", body: "Monthly outreach to the roundups, review sites, comparisons and threads AI engines cite most, to get you mentioned there. Scale gets twice the outreach.", plan: "Growth+" },
       { name: "Citation tracking", body: "See every time an engine cites you, right in your weekly report.", plan: "Growth+" },
+      { name: "Own-site recommendations", body: "AI often cites your own website. We tell you which pages to add or improve, like FAQs, comparisons and pricing, and your team makes the changes.", plan: "Growth+" },
       { name: "Sponsored placements (optional)", body: "Featured listings or sponsored articles on high-value sources, paid from a separate budget you approve one by one. Always labeled as sponsored.", plan: "Growth+" },
       { name: "Original stat or data piece", body: "A small piece of original research about your category. Unique numbers attract citations.", plan: "Scale" },
     ],

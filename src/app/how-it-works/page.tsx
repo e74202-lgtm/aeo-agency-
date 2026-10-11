@@ -41,7 +41,7 @@ const steps = [
   {
     when: "Every month",
     title: "Build citations",
-    body: "We find the sources engines cite for your prompts and reach out every month to get you mentioned in them. Scale gets twice the outreach. Where it helps, we can add clearly labeled sponsored placements from a budget you approve. Engines decide what they cite, so we commit to the work and report the results.",
+    body: "We find the sources engines cite for your prompts and reach out every month to get you mentioned in them. Scale gets twice the outreach. We also tell you which pages on your own site to add or improve so engines can cite you directly. Where it helps, we can add clearly labeled sponsored placements from a budget you approve. Engines decide what they cite, so we commit to the work and report the results.",
     plan: "Growth+",
   },
   {

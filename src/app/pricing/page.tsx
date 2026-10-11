@@ -26,6 +26,10 @@ const terms = [
     a: "Some high-value sources sell featured listings or sponsored articles. On Growth and Scale we can buy these for you from a separate placement budget that you approve in advance, one placement at a time. Sponsored placements are always clearly labeled as sponsored, and we never pay for reviews or disguised comments.",
   },
   {
+    q: "What are own-site recommendations?",
+    a: "AI engines often cite a brand's own website, so we tell you which pages to add or improve, like clear FAQs, comparison pages and pricing details, based on what your prompt runs show. You or your web team make the changes; we check whether engines start citing them.",
+  },
+  {
     q: "Why refresh placements every 90 days?",
     a: "AI engines favor sources that look current. Refreshing older placements keeps them fresh, so they keep getting picked up.",
   },
@@ -46,6 +50,7 @@ const comparison: { label: string | string[]; from: number }[] = [
     from: 2,
   },
   { label: "Optional sponsored placements (you approve each)", from: 2 },
+  { label: "Own-site recommendations (pages to add or fix)", from: 2 },
   { label: "90-day refresh + monthly prompt tuning", from: 2 },
   { label: "Original data piece + fortnightly strategy calls", from: 3 },
 ]
