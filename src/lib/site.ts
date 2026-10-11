@@ -27,8 +27,8 @@ export const steps = [
     body: "We run the real questions your buyers ask across every major AI engine and record who gets named, cited and recommended.",
   },
   {
-    title: "Fix what AI can't read",
-    body: "Schema, entity data and site structure, cleaned up so models understand exactly who you are and what you're best at.",
+    title: "Track every week",
+    body: "Your buyer questions run across the major engines every week, with an alert the moment a competitor starts showing up.",
   },
   {
     title: "Publish answer-ready content",
