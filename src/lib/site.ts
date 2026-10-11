@@ -68,3 +68,68 @@ export const faqs = [
     a: "We test a set of buyer prompts for your category, show where you appear and where competitors appear instead, and give you the top fixes ranked by impact. No obligation.",
   },
 ]
+
+export type Plan = {
+  name: string
+  price: string
+  period?: string
+  blurb: string
+  includesFrom?: string
+  features: string[]
+  cta: { label: string; href: string }
+  featured?: boolean
+}
+
+export const plans: Plan[] = [
+  {
+    name: "Free AI Audit",
+    price: "$0",
+    blurb: "See where you stand before you spend a dollar.",
+    features: [
+      "Your brand tested across the major AI engines",
+      "Who gets recommended instead of you",
+      "Your top fixes, ranked by impact",
+    ],
+    cta: { label: "Get my free audit", href: "/audit" },
+  },
+  {
+    name: "Monitor",
+    price: "$500",
+    period: "/month",
+    blurb: "Know every week whether AI is naming you.",
+    features: [
+      "Weekly prompt runs across every major engine",
+      "“Named in X of 150 prompts” report",
+      "Alert when a competitor moves in",
+    ],
+    cta: { label: "Start with a free audit", href: "/audit" },
+  },
+  {
+    name: "Growth",
+    price: "$1,500",
+    period: "/month",
+    blurb: "Actively earn the mentions that get you recommended.",
+    includesFrom: "Monitor",
+    features: [
+      "4 placements a month",
+      "90-day refresh on older placements",
+      "Prompt list tuned every month",
+    ],
+    cta: { label: "Start with a free audit", href: "/audit" },
+    featured: true,
+  },
+  {
+    name: "Scale",
+    price: "$3,000",
+    period: "/month",
+    blurb: "Own the answer across markets.",
+    includesFrom: "Growth",
+    features: [
+      "10 placements a month",
+      "One original stat or data piece",
+      "Two markets or languages",
+      "Fortnightly strategy call",
+    ],
+    cta: { label: "Start with a free audit", href: "/audit" },
+  },
+]
