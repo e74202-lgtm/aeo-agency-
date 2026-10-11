@@ -210,3 +210,13 @@
 .hero-portal [data-gp-content] {
   padding: 6rem 1.25rem;
 }
+/* On short screens the caption collides with the hero buttons: hide it visually,
+   but keep it reachable for keyboard users (it reappears when focused). */
+@media (max-height: 700px) {
+  .hero-portal [data-gp-caption]:not(:focus-within) {
+    clip-path: inset(50%);
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+}

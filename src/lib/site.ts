@@ -1,6 +1,8 @@
 // One place for site-wide info and homepage copy. Change the name here once we pick one.
 export const site = {
   name: "Samael",
+  // The live address. Set NEXT_PUBLIC_SITE_URL (in Vercel too) once you have your own domain.
+  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://samaelagency.vercel.app").replace(/\/$/, ""),
   tagline: "Be the answer.",
   description:
     "We get your brand cited and recommended by ChatGPT, Perplexity, Gemini and Google AI Overviews.",
@@ -138,4 +140,14 @@ export const planOptions = [
     .filter((plan) => plan.period)
     .map((plan) => ({ value: plan.name.toLowerCase(), label: `${plan.name} (${plan.price}${plan.period})` })),
   { value: "not-sure", label: "Not sure yet" },
+]
+
+// Every public page, used for the sitemap and llms.txt. Add new pages here.
+export const pages = [
+  { path: "/", title: "Home", description: "Answer Engine Optimization: we get brands named, cited and recommended by AI." },
+  { path: "/services", title: "Services", description: "What we do: measure where AI recommends you, build citations, and keep your mentions fresh." },
+  { path: "/how-it-works", title: "How it works", description: "How AI engines choose who to recommend, our process step by step, and a realistic timeline." },
+  { path: "/pricing", title: "Pricing", description: "Free AI audit, then Monitor, Growth or Scale plans." },
+  { path: "/audit", title: "Free AI visibility audit", description: "Request a free audit of how AI engines answer for your brand." },
+  { path: "/contact", title: "Contact", description: "Talk to us about the Monitor, Growth or Scale plan." },
 ]
