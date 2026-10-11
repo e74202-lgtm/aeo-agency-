@@ -13,10 +13,10 @@ const included = [
 export function FinalCta() {
   return (
     <section className="px-5 pb-24 md:pb-32">
-      <div className="reveal relative mx-auto max-w-6xl overflow-hidden rounded-[32px] bg-signal px-7 py-16 text-foreground sm:px-12 md:py-24">
+      <div className="reveal relative mx-auto max-w-6xl overflow-hidden rounded-[32px] bg-signal px-7 py-16 text-signal-foreground sm:px-12 md:py-24">
         <svg
           viewBox="0 0 200 200"
-          className="pointer-events-none absolute -right-16 -bottom-24 size-[420px] text-foreground/10"
+          className="pointer-events-none absolute -right-16 -bottom-24 size-[420px] text-white/10"
           aria-hidden="true"
         >
           <path
@@ -45,7 +45,7 @@ export function FinalCta() {
           <ul className="space-y-4 text-[15px] font-medium">
             {included.map((item) => (
               <li key={item} className="flex items-start gap-3">
-                <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-foreground text-signal">
+                <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-foreground text-signal-bright">
                   <Check className="size-3" aria-hidden="true" />
                 </span>
                 {item}
