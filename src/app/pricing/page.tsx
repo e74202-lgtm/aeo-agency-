@@ -1,10 +1,10 @@
 import type { Metadata } from "next"
-import { ArrowRight, Check } from "lucide-react"
+import { Activity, Rocket, Search, TrendingUp } from "lucide-react"
 
 import { FinalCta } from "@/components/home/final-cta"
 import { SectionLabel } from "@/components/home/section-label"
-import { OriginButton } from "@/components/ui/origin-button"
-import { plans, site, type Plan } from "@/lib/site"
+import { PricingModule, type PricingPlan } from "@/components/ui/pricing-module"
+import { plans, site } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "Pricing",
@@ -30,6 +30,42 @@ const terms = [
     a: "A small piece of original research about your category. AI engines love citing unique numbers, so it becomes a magnet for mentions.",
   },
 ]
+
+// The same six rows on every card, so it's easy to see what each upgrade adds.
+// Index = plan order in site.ts: Free AI Audit, Monitor, Growth, Scale.
+const comparison: { label: string | string[]; from: number }[] = [
+  { label: "AI visibility audit", from: 0 },
+  { label: "Weekly prompt runs + \u201cNamed in X of 150\u201d report", from: 1 },
+  { label: "Competitor alerts", from: 1 },
+  { label: ["Monthly placements", "Monthly placements", "4 placements a month", "10 placements a month"], from: 2 },
+  { label: "90-day refresh + monthly prompt tuning", from: 2 },
+  { label: "Original data piece + fortnightly strategy calls", from: 3 },
+]
+
+const icons = [Search, Activity, TrendingUp, Rocket]
+
+const modulePlans: PricingPlan[] = plans.map((plan, i) => {
+  const Icon = icons[i]
+  const isFree = !plan.period
+  return {
+    id: plan.name.toLowerCase().replace(/\s+/g, "-"),
+    name: plan.name,
+    description: plan.blurb,
+    icon: (
+      <span className="flex size-12 items-center justify-center rounded-2xl bg-signal/10 text-signal">
+        <Icon className="size-6" aria-hidden="true" />
+      </span>
+    ),
+    priceMonthly: Number(plan.price.replace(/[^0-9.]/g, "")),
+    ...(isFree && { priceLabel: "Free", periodLabel: "one-time" }),
+    features: comparison.map((row) => ({
+      label: Array.isArray(row.label) ? row.label[i] : row.label,
+      included: i >= row.from,
+    })),
+    recommended: plan.featured,
+    cta: plan.cta,
+  }
+})
 
 // Machine-readable pricing, so AI engines and Google can quote our plans accurately.
 const offerSchema = {
@@ -80,13 +116,7 @@ export default function PricingPage() {
           </p>
         </div>
 
-        <ul className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {plans.map((plan) => (
-            <li key={plan.name} className="flex">
-              <PlanCard plan={plan} />
-            </li>
-          ))}
-        </ul>
+        <PricingModule plans={modulePlans} className="mt-10 bg-transparent px-0 py-0 md:px-0" />
 
         <p className="mt-8 text-center text-sm text-muted-foreground">
           Prices in USD. Not sure which plan fits? Start with the free audit and we&apos;ll recommend one.
@@ -114,51 +144,5 @@ export default function PricingPage() {
 
       <FinalCta />
     </>
-  )
-}
-
-function PlanCard({ plan }: { plan: Plan }) {
-  const featured = plan.featured
-  return (
-    <div
-      className={`relative flex w-full flex-col rounded-3xl border p-7 ${
-        featured ? "dark border-transparent shadow-2xl shadow-foreground/20" : "bg-card"
-      }`}
-    >
-      {featured && (
-        <span className="absolute -top-3 left-7 rounded-full bg-signal px-3 py-1 font-mono text-[10px] font-medium tracking-[0.15em] text-background uppercase">
-          Recommended
-        </span>
-      )}
-
-      <h2 className="font-display text-xl font-semibold tracking-[-0.02em]">{plan.name}</h2>
-      <p className="mt-2 min-h-12 text-sm leading-relaxed text-muted-foreground">{plan.blurb}</p>
-
-      <p className="mt-6 flex items-baseline gap-1">
-        <span className="font-display text-5xl font-semibold tracking-[-0.04em] tabular-nums">{plan.price}</span>
-        {plan.period && <span className="text-sm text-muted-foreground">{plan.period}</span>}
-      </p>
-
-      <OriginButton
-        href={plan.cta.href}
-        variant={featured ? "primary" : "outline"}
-        className="group mt-6 h-11 w-full text-sm"
-      >
-        {plan.cta.label}
-        <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
-      </OriginButton>
-
-      <ul className="mt-7 space-y-3 border-t pt-6 text-sm">
-        {plan.includesFrom && (
-          <li className="font-medium">Everything in {plan.includesFrom}, plus:</li>
-        )}
-        {plan.features.map((feature) => (
-          <li key={feature} className="flex items-start gap-2.5">
-            <Check className="mt-0.5 size-4 shrink-0 text-signal" aria-hidden="true" />
-            {feature}
-          </li>
-        ))}
-      </ul>
-    </div>
   )
 }
