@@ -122,12 +122,11 @@ export const plans: Plan[] = [
     name: "Scale",
     price: "$3,000",
     period: "/month",
-    blurb: "Own the answer across markets.",
+    blurb: "Become the default answer in your category.",
     includesFrom: "Growth",
     features: [
       "10 placements a month",
       "One original stat or data piece",
-      "Two markets or languages",
       "Fortnightly strategy call",
     ],
     cta: { label: "Start with a free audit", href: "/audit" },
