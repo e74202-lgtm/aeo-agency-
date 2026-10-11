@@ -31,12 +31,12 @@ export const steps = [
     body: "Your buyer questions run across the major engines every week, with an alert the moment a competitor starts showing up.",
   },
   {
-    title: "Publish answer-ready content",
-    body: "Pages built to be quoted: direct answers, original data and comparisons that engines lift straight into their responses.",
-  },
-  {
     title: "Earn the citations",
     body: "AI trusts what others say about you. We get you into the reviews, roundups and forums that models pull their sources from.",
+  },
+  {
+    title: "Keep it fresh",
+    body: "Older placements get refreshed every 90 days and your question list is tuned monthly, so you stay the answer as things change.",
   },
 ]
 
