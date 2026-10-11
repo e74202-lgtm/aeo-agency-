@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 const interTight = Inter_Tight({
   variable: "--font-inter-tight",
   subsets: ["latin"],
-  weight: ["600"],
+  weight: ["600", "800"],
   style: ["normal", "italic"],
 });
 

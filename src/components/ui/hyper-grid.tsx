@@ -33,6 +33,8 @@ interface MovingGridProps {
     maskRadius?: number;
     className?: string;
     children?: React.ReactNode;
+    /** EDIT: freeze all motion (e.g. while shown through a clip-path, where animating is very costly) */
+    paused?: boolean;
 }
 
 const MovingGrid: React.FC<MovingGridProps> = ({
@@ -41,6 +43,7 @@ const MovingGrid: React.FC<MovingGridProps> = ({
     maskRadius = 400,
     className = "",
     children,
+    paused = false,
 }) => {
     const [isMounted, setIsMounted] = useState(false);
     const [isWarping, setIsWarping] = useState(false);
@@ -133,7 +136,7 @@ const MovingGrid: React.FC<MovingGridProps> = ({
     // --- Animation Loop ---
 
     useAnimationFrame((_, delta) => {
-        if (prefersReducedMotion) return;
+        if (prefersReducedMotion || paused) return;
 
         // Clamp delta to prevent huge jumps if tab is inactive
         const safeDelta = Math.min(delta, 100);
@@ -227,7 +230,8 @@ const MovingGrid: React.FC<MovingGridProps> = ({
         <motion.div
             ref={containerRef}
             onMouseMove={handleMouseMove}
-            initial="hidden"
+            // EDIT: skip the intro animation when mounted paused
+            initial={paused ? false : "hidden"}
             animate={isMounted ? "visible" : "hidden"}
             variants={containerVariants}
             className={`relative w-full h-screen overflow-hidden bg-[#050505] flex flex-col items-center justify-center perspective-distant font-sans ${className}`}
@@ -254,8 +258,8 @@ const MovingGrid: React.FC<MovingGridProps> = ({
                 aria-hidden="true"
             >
                 {/* EDIT: brand "signal" glow instead of blue/indigo */}
-                <div className="absolute top-[-20%] left-[-10%] w-[70%] h-[70%] bg-signal/25 rounded-full blur-[150px] animate-pulse-slow" />
-                <div className="absolute bottom-[-20%] right-[-10%] w-[70%] h-[70%] bg-signal/15 rounded-full blur-[150px] animate-pulse-slow animation-delay-2000" />
+                <div className={`absolute top-[-20%] left-[-10%] w-[70%] h-[70%] bg-signal/25 rounded-full blur-[150px] ${paused ? "" : "animate-pulse-slow"}`} />
+                <div className={`absolute bottom-[-20%] right-[-10%] w-[70%] h-[70%] bg-signal/15 rounded-full blur-[150px] ${paused ? "" : "animate-pulse-slow"} animation-delay-2000`} />
             </motion.div>
 
             {/* --- 3D Grid System --- */}

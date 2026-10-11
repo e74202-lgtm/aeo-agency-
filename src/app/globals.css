@@ -172,3 +172,39 @@
   html { scroll-behavior: auto; }
   .animate-rise, .animate-blink, .reveal, .animate-pulse-slow { animation: none; }
 }
+
+/* Hero "recommends." glyph portal (components/home/hero.tsx).
+   The component ships its own zero-specificity styles, so these override them. */
+.hero-portal {
+  font-family: var(--font-sans);
+}
+/* Size the scene to the screen below our 4rem sticky header */
+.hero-portal > [data-gp-viewport] {
+  height: calc(100svh - 4rem);
+}
+.hero-portal[data-gp-motion="on"] [data-gp-pin] {
+  top: 4rem;
+}
+.hero-portal [data-hero-top] {
+  position: absolute;
+  inset: auto 1.25rem calc(100% - var(--gp-word-top, 35%) + 1.75rem);
+}
+.hero-portal [data-hero-bottom] {
+  position: absolute;
+  inset: calc(var(--gp-word-bottom, 50%) + 1.75rem) 1.25rem auto;
+}
+.hero-portal [data-gp-caption] {
+  inset: auto 0 1.5rem;
+  justify-content: center;
+}
+.hero-portal [data-gp-enter] {
+  gap: 0.5rem;
+  font-family: var(--font-geist-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+.hero-portal [data-gp-content] {
+  padding: 6rem 1.25rem;
+}
