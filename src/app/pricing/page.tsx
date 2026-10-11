@@ -15,11 +15,15 @@ export const metadata: Metadata = {
 const terms = [
   {
     q: "What's citation building?",
-    a: "We reach out to the sources AI engines cite most in your category, like industry roundups, review sites, comparison articles and community threads, to get your brand mentioned there. Each mention we earn is a placement, and placements are what engines pick up and cite.",
+    a: "We reach out to the sources AI engines cite most in your category, like industry roundups, review sites, comparison articles and community threads, to get your brand mentioned there. Each mention is a placement, and placements are what engines pick up and cite. Placements can be earned through outreach or, with your approval, sponsored.",
   },
   {
     q: "What's a prompt run?",
     a: "We ask each major AI engine your list of buyer questions and record who gets named, cited and recommended. That's how we track your share of answer over time.",
+  },
+  {
+    q: "What are sponsored placements?",
+    a: "Some high-value sources sell featured listings or sponsored articles. On Growth and Scale we can buy these for you from a separate placement budget that you approve in advance, one placement at a time. Sponsored placements are always clearly labeled as sponsored, and we never pay for reviews or disguised comments.",
   },
   {
     q: "Why refresh placements every 90 days?",
@@ -41,6 +45,7 @@ const comparison: { label: string | string[]; from: number }[] = [
     label: ["Citation building", "Citation building", "Citation building + tracking", "Citation building (2\u00d7 outreach) + tracking"],
     from: 2,
   },
+  { label: "Optional sponsored placements (you approve each)", from: 2 },
   { label: "90-day refresh + monthly prompt tuning", from: 2 },
   { label: "Original data piece + fortnightly strategy calls", from: 3 },
 ]
@@ -123,6 +128,8 @@ export default function PricingPage() {
 
         <p className="mt-8 text-center text-sm text-muted-foreground">
           AI engines decide what they cite, so we commit to the work and show you the results every week.
+          <br />
+          Sponsored placements are optional, paid from a separate budget you approve, and always labeled.
           <br />
           Prices in USD. Not sure which plan fits? Start with the free audit and we&apos;ll recommend one.
         </p>

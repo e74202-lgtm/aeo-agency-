@@ -113,6 +113,7 @@ export const plans: Plan[] = [
     features: [
       "Citation building: monthly outreach to the sources AI cites most",
       "Citation tracking in your weekly report",
+      "Optional sponsored placements: separate budget, you approve each one",
       "90-day refresh on older placements",
       "Prompt list tuned every month",
     ],
