@@ -1,4 +1,4 @@
-import { faqs, pages, plans, site, steps } from "@/lib/site"
+import { faqs, geoStudy, pages, plans, site, stats, steps } from "@/lib/site"
 
 // Served at /llms.txt: a plain-text summary written for AI models (see llmstxt.org).
 // Built from site.ts, so it updates whenever pages, plans or FAQs change.
@@ -31,6 +31,10 @@ export function GET() {
     }),
     "",
     "AI engines decide what they cite, so we commit to the work and report results weekly. We don't guarantee rankings.",
+    "",
+    "## Key facts about AI search",
+    "",
+    ...[...stats, geoStudy].map((s) => `- ${s.value} ${s.label}. Source: ${s.source} (${s.href})`),
     "",
     "## FAQ",
     "",

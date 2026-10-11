@@ -1,4 +1,6 @@
 import { SectionLabel } from "@/components/home/section-label"
+import { StatCards } from "@/components/stat-cards"
+import { stats } from "@/lib/site"
 
 const rows = [
   { label: "The goal", seo: "Rank on page one", aeo: "Be named in the answer" },
@@ -9,7 +11,8 @@ const rows = [
 
 export function Shift() {
   return (
-    <section className="mx-auto grid max-w-6xl gap-14 px-5 py-24 md:py-32 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-20">
+    <section className="mx-auto max-w-6xl px-5 py-24 md:py-32">
+      <div className="grid gap-14 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-20">
       <div className="reveal space-y-6">
         <SectionLabel>The shift</SectionLabel>
         <h2 className="font-display text-4xl leading-[1.02] font-semibold tracking-[-0.04em] sm:text-5xl text-balance lg:text-6xl">
@@ -42,6 +45,9 @@ export function Shift() {
           </tbody>
         </table>
       </div>
+      </div>
+
+      <StatCards items={stats} className="reveal mt-16" />
     </section>
   )
 }

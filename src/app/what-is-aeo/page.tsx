@@ -4,8 +4,9 @@ import { ArrowRight } from "lucide-react"
 
 import { FinalCta } from "@/components/home/final-cta"
 import { SectionLabel } from "@/components/home/section-label"
+import { StatCards } from "@/components/stat-cards"
 import { OriginButton } from "@/components/ui/origin-button"
-import { site } from "@/lib/site"
+import { geoStudy, site, stats } from "@/lib/site"
 
 const TITLE = "What is AEO? A plain-English guide to Answer Engine Optimization"
 const DESCRIPTION =
@@ -116,6 +117,7 @@ const articleSchema = {
       author: { "@id": `${site.url}/#organization` },
       publisher: { "@id": `${site.url}/#organization` },
       image: `${site.url}/opengraph-image`,
+      citation: [...stats.map((s) => s.href), geoStudy.href],
     },
     {
       "@type": "FAQPage",
@@ -202,6 +204,12 @@ export default function WhatIsAeoPage() {
           and brands&apos; own websites. When many credible sources mention a brand consistently for a topic, engines are
           more likely to name it. That&apos;s why AEO focuses on mentions and citations, not just keywords.
         </P>
+        <P>
+          How a page is written matters too. In one of the first studies of this, researchers found that adding{" "}
+          <strong className="font-semibold text-foreground">statistics, quotations and source citations</strong> made
+          pages noticeably more likely to be used in AI answers:
+        </P>
+        <StatCards items={[geoStudy]} className="mt-6 lg:grid-cols-1!" />
 
         <H2 id="aeo-vs-seo">How is AEO different from SEO and GEO?</H2>
         <Answer>SEO competes for a spot in a list of links. AEO competes to be in the answer itself.</Answer>
@@ -246,6 +254,8 @@ export default function WhatIsAeoPage() {
           links. And because engines repeat what trusted sources say, the brands that build those mentions early tend to
           keep showing up.
         </P>
+        <P>The numbers behind the shift:</P>
+        <StatCards items={stats} className="mt-6 lg:grid-cols-2!" />
 
         <H2 id="how-to">How do you do AEO?</H2>
         <Answer>Pick your buyers&apos; questions, measure, find what AI cites, get mentioned there, and track it weekly.</Answer>

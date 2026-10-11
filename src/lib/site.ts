@@ -155,3 +155,40 @@ export const pages = [
   { path: "/audit", title: "Free AI visibility audit", description: "Request a free audit of how AI engines answer for your brand." },
   { path: "/contact", title: "Contact", description: "Talk to us about the Monitor, Growth or Scale plan." },
 ]
+
+// Real, sourced statistics. Every number links to where it came from: AI engines (and readers)
+// trust figures they can verify. Update these when newer figures are published.
+export const stats = [
+  {
+    value: "900M",
+    label: "people use ChatGPT every week",
+    source: "OpenAI, Feb 2026 (via TechCrunch)",
+    href: "https://techcrunch.com/2026/02/27/chatgpt-reaches-900m-weekly-active-users",
+  },
+  {
+    value: "2.5B",
+    label: "people a month see Google's AI Overviews",
+    source: "Alphabet, 2026 (via The Motley Fool)",
+    href: "https://www.fool.com/investing/2026/08/21/sundar-pichai-alphabets-ai-billion-users/",
+  },
+  {
+    value: "8% vs 15%",
+    label: "of Google searches end in a link click with an AI summary vs without one",
+    source: "Pew Research Center, Jul 2025",
+    href: "https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/",
+  },
+  {
+    value: "+1,200%",
+    label: "growth in visits from AI assistants to US retail sites (Feb 2025 vs Jul 2024)",
+    source: "Adobe Analytics, Mar 2025",
+    href: "https://blog.adobe.com/en/publish/2025/03/17/adobe-analytics-traffic-to-us-retail-websites-from-generative-ai-sources-jumps-1200-percent",
+  },
+]
+
+/** The research finding behind "AI likes statistics". */
+export const geoStudy = {
+  value: "Up to 40%",
+  label: "more visibility in AI answers when pages add statistics, quotations and source citations",
+  source: "Aggarwal et al., “GEO: Generative Engine Optimization” (Princeton University, IIT Delhi and others), 2023",
+  href: "https://arxiv.org/abs/2311.09735",
+}
