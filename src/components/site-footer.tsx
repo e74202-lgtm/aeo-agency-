@@ -4,8 +4,8 @@ import { Logo } from "@/components/logo"
 import { site } from "@/lib/site"
 
 const columns = [
-  { title: "Company", links: [...site.nav.slice(0, 3), { label: "About", href: "/about" }] },
-  { title: "Learn", links: [site.nav[3], site.nav[4], { label: "FAQ", href: "/faq" }, { label: "What is AEO?", href: "/resources/what-is-aeo" }] },
+  { title: "Company", links: site.nav },
+  { title: "Get started", links: [site.cta, { label: "FAQ", href: "/#faq" }] },
 ]
 
 export function SiteFooter() {

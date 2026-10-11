@@ -5,7 +5,7 @@ import { faqs } from "@/lib/site"
 
 export function Faq() {
   return (
-    <section className="mx-auto grid max-w-6xl gap-12 px-5 py-24 md:py-32 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
+    <section id="faq" className="mx-auto grid max-w-6xl scroll-mt-16 gap-12 px-5 py-24 md:py-32 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
       <div className="space-y-6 lg:sticky lg:top-28 lg:self-start">
         <SectionLabel>FAQ</SectionLabel>
         <h2 className="font-display text-4xl leading-[1.02] font-semibold tracking-[-0.04em] sm:text-5xl lg:text-6xl">

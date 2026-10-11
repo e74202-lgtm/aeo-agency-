@@ -7,9 +7,7 @@ export const site = {
   nav: [
     { label: "Services", href: "/services" },
     { label: "How it works", href: "/how-it-works" },
-    { label: "Results", href: "/results" },
     { label: "Pricing", href: "/pricing" },
-    { label: "Resources", href: "/resources" },
   ],
   cta: { label: "Free AI audit", href: "/audit" },
 }
