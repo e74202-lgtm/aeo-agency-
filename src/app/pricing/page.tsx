@@ -1,10 +1,9 @@
 import type { Metadata } from "next"
-import Link from "next/link"
 import { ArrowRight, Check } from "lucide-react"
 
 import { FinalCta } from "@/components/home/final-cta"
 import { SectionLabel } from "@/components/home/section-label"
-import { Button } from "@/components/ui/button"
+import { OriginButton } from "@/components/ui/origin-button"
 import { plans, site, type Plan } from "@/lib/site"
 
 export const metadata: Metadata = {
@@ -140,16 +139,14 @@ function PlanCard({ plan }: { plan: Plan }) {
         {plan.period && <span className="text-sm text-muted-foreground">{plan.period}</span>}
       </p>
 
-      <Button
-        asChild
-        variant={featured ? "default" : "outline"}
-        className="group mt-6 h-11 w-full rounded-full text-sm"
+      <OriginButton
+        href={plan.cta.href}
+        variant={featured ? "primary" : "outline"}
+        className="group mt-6 h-11 w-full text-sm"
       >
-        <Link href={plan.cta.href}>
-          {plan.cta.label}
-          <ArrowRight className="transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
-        </Link>
-      </Button>
+        {plan.cta.label}
+        <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+      </OriginButton>
 
       <ul className="mt-7 space-y-3 border-t pt-6 text-sm">
         {plan.includesFrom && (

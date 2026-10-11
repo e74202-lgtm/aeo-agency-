@@ -1,10 +1,9 @@
 import type { Metadata } from "next"
-import Link from "next/link"
 import { ArrowRight, Bell, Check, Minus, Plus } from "lucide-react"
 
 import { FinalCta } from "@/components/home/final-cta"
 import { SectionLabel } from "@/components/home/section-label"
-import { Button } from "@/components/ui/button"
+import { OriginButton } from "@/components/ui/origin-button"
 import { site } from "@/lib/site"
 
 export const metadata: Metadata = {
@@ -99,15 +98,13 @@ export default function ServicesPage() {
             plan it comes with.
           </p>
           <div className="flex flex-col gap-3 pt-2 sm:flex-row">
-            <Button asChild className="group h-12 rounded-full px-6 text-[15px]">
-              <Link href={site.cta.href}>
-                Get your free AI visibility audit
-                <ArrowRight className="transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
-              </Link>
-            </Button>
-            <Button asChild variant="outline" className="h-12 rounded-full bg-card/60 px-6 text-[15px]">
-              <Link href="/pricing">See pricing</Link>
-            </Button>
+            <OriginButton href={site.cta.href} variant="primary" className="group px-6">
+              Get your free AI visibility audit
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+            </OriginButton>
+            <OriginButton href="/pricing" className="px-6">
+              See pricing
+            </OriginButton>
           </div>
         </div>
 

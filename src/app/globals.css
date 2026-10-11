@@ -108,6 +108,8 @@
   --accent: oklch(0.26 0.008 60);
   --accent-foreground: oklch(0.97 0.004 85);
   --signal: oklch(0.78 0.15 163);
+  /* Dark text on the bright emerald used in dark sections */
+  --signal-foreground: oklch(0.17 0.01 60);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.78 0.15 163);

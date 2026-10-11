@@ -1,10 +1,9 @@
 import type { Metadata } from "next"
-import Link from "next/link"
 import { ChevronRight, FileText, MessageSquare, Sparkles, Trophy } from "lucide-react"
 
 import { FinalCta } from "@/components/home/final-cta"
 import { SectionLabel } from "@/components/home/section-label"
-import { Button } from "@/components/ui/button"
+import { OriginButton } from "@/components/ui/origin-button"
 
 export const metadata: Metadata = {
   title: "How it works",
@@ -138,9 +137,9 @@ export default function HowItWorksPage() {
             <p className="max-w-sm text-muted-foreground">
               Every client starts with the free audit. The tag on each step shows which plan includes it.
             </p>
-            <Button asChild variant="outline" className="h-11 rounded-full bg-card/60 px-5 text-sm">
-              <Link href="/pricing">Compare plans</Link>
-            </Button>
+            <OriginButton href="/pricing" className="h-11 px-5 text-sm">
+              Compare plans
+            </OriginButton>
           </div>
 
           <ol className="relative space-y-4 before:absolute before:top-6 before:bottom-6 before:left-[19px] before:w-px before:bg-border">

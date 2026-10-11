@@ -2,7 +2,7 @@ import Link from "next/link"
 import { ArrowUpRight, Menu } from "lucide-react"
 
 import { Logo } from "@/components/logo"
-import { Button } from "@/components/ui/button"
+import { OriginButton } from "@/components/ui/origin-button"
 import { site } from "@/lib/site"
 
 export function SiteHeader() {
@@ -24,12 +24,10 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button asChild className="h-10 rounded-full px-4 text-sm">
-            <Link href={site.cta.href}>
-              {site.cta.label}
-              <ArrowUpRight aria-hidden="true" />
-            </Link>
-          </Button>
+          <OriginButton href={site.cta.href} variant="primary" className="h-10 px-4 text-sm">
+            {site.cta.label}
+            <ArrowUpRight className="size-4" aria-hidden="true" />
+          </OriginButton>
 
           {/* Mobile menu: <details> opens and closes without any JavaScript */}
           <details className="group relative md:hidden">

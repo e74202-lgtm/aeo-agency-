@@ -1,7 +1,6 @@
-import Link from "next/link"
 import { ArrowRight, Check } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
+import { OriginButton } from "@/components/ui/origin-button"
 import { site } from "@/lib/site"
 
 const included = [
@@ -31,15 +30,17 @@ export function FinalCta() {
             <h2 className="font-display text-4xl leading-[0.98] font-semibold tracking-[-0.045em] sm:text-5xl text-balance md:text-7xl">
               Find out what AI says about you.
             </h2>
-            <Button
-              asChild
-              className="group mt-4 h-12 rounded-full bg-foreground px-6 text-[15px] text-background hover:bg-foreground/85"
+            {/* On the green block, fill with paper instead of green */}
+            <OriginButton
+              href={site.cta.href}
+              variant="primary"
+              fillClassName="bg-background"
+              filledClassName="text-foreground"
+              className="group mt-4 px-6"
             >
-              <Link href={site.cta.href}>
-                Get my free audit
-                <ArrowRight className="transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
-              </Link>
-            </Button>
+              Get my free audit
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+            </OriginButton>
           </div>
 
           <ul className="space-y-4 text-[15px] font-medium">

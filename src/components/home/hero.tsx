@@ -1,11 +1,10 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 
 import { AnswerCard } from "@/components/home/answer-card"
-import { Button } from "@/components/ui/button"
+import { OriginButton } from "@/components/ui/origin-button"
 import GlyphPortal, { type GlyphPortalStyle } from "@/components/ui/glyph-portal"
 import { site } from "@/lib/site"
 
@@ -67,15 +66,13 @@ export function Hero() {
               We make sure that answer is you.
             </p>
             <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-              <Button asChild className="group h-12 rounded-full px-6 text-[15px]">
-                <Link href={site.cta.href}>
-                  Get your free AI visibility audit
-                  <ArrowRight className="transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
-                </Link>
-              </Button>
-              <Button asChild variant="outline" className="h-12 rounded-full bg-card/60 px-6 text-[15px]">
-                <Link href="#method">See how it works</Link>
-              </Button>
+              <OriginButton href={site.cta.href} variant="primary" className="group px-6">
+                Get your free AI visibility audit
+                <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+              </OriginButton>
+              <OriginButton href="#method" className="px-6">
+                See how it works
+              </OriginButton>
             </div>
           </div>
         </>

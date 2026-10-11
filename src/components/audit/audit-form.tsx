@@ -3,7 +3,7 @@
 import { useRef, useState } from "react"
 import { ArrowRight, CircleAlert, CircleCheck, LoaderCircle } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
+import { OriginButton } from "@/components/ui/origin-button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
@@ -186,23 +186,24 @@ export function AuditForm() {
         </FormMessage>
       )}
 
-      <Button
+      <OriginButton
         type="submit"
-        disabled={status === "submitting"}
-        className="group h-12 w-full rounded-full text-[15px]"
+        variant="primary"
+        loading={status === "submitting"}
+        className="group w-full"
       >
         {status === "submitting" ? (
           <>
-            <LoaderCircle className="animate-spin" aria-hidden="true" />
+            <LoaderCircle className="size-4 animate-spin" aria-hidden="true" />
             Sending…
           </>
         ) : (
           <>
             Get my free audit
-            <ArrowRight className="transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+            <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
           </>
         )}
-      </Button>
+      </OriginButton>
       <p className="text-center text-sm text-muted-foreground">No obligation. No spam. Just the results.</p>
     </form>
   )
