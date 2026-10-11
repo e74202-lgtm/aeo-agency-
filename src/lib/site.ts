@@ -1,6 +1,6 @@
 // One place for site-wide info and homepage copy. Change the name here once we pick one.
 export const site = {
-  name: "[Agency]",
+  name: "Samael",
   tagline: "Be the answer.",
   description:
     "We get your brand cited and recommended by ChatGPT, Perplexity, Gemini and Google AI Overviews.",

@@ -1,4 +1,4 @@
-# [Agency] website
+# Samael website
 
 Marketing site for an AEO (Answer Engine Optimization) agency. See [PLAN.md](PLAN.md) for the full plan.
 

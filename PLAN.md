@@ -1,12 +1,12 @@
 # AEO Agency Website: Plan
 
-Status: planning. No name or domain yet. Use `[Agency]` as a placeholder everywhere until we pick one.
+Status: building. Name: **Samael**. Domain not bought yet (samael.agency or samaelagency.com appear free).
 
 ## Decisions made
 - **Positioning:** by outcome, not by industry.
 - **Build:** coded by Claude (not no-code).
 - **Components:** the owner will supply components and designs (e.g. from 21st.dev) to drop in.
-- **Name / domain:** not decided yet (see "Open questions").
+- **Name:** Samael. **Domain:** not decided yet.
 
 ---
 
@@ -139,7 +139,7 @@ Chosen so 21st.dev components drop in directly (they're React + Tailwind + shadc
 ---
 
 ## Open questions
-- [ ] Agency name
+- [x] Agency name: Samael
 - [ ] Domain
 - [ ] Brand colors / vibe (can come from the first 21st.dev components supplied)
 - [ ] Pricing numbers
