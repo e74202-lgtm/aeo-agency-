@@ -40,8 +40,8 @@ const steps = [
   },
   {
     when: "Every month",
-    title: "Earn placements",
-    body: "We find the sources engines are citing for your prompts and get you mentioned in them: 4 placements a month on Growth, 10 on Scale.",
+    title: "Build citations",
+    body: "We find the sources engines cite for your prompts and reach out every month to get you mentioned in them. Scale gets twice the outreach. Engines decide what they cite, so we commit to the work and report the results.",
     plan: "Growth+",
   },
   {

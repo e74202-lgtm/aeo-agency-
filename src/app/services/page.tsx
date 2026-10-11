@@ -32,9 +32,10 @@ const pillars: { id: string; label: string; title: string; intro: string; servic
     id: "earn",
     label: "02 · Earn",
     title: "Get mentioned where AI looks for answers.",
-    intro: "AI engines recommend brands that trusted sources talk about. We put you in those sources and keep you there.",
+    intro: "AI engines recommend brands that trusted sources talk about. We go after those sources for you, every month, and track what gets picked up.",
     services: [
-      { name: "Placements", body: "Your brand in the roundups, review sites, comparisons and threads AI engines pull from. 4 a month on Growth, 10 on Scale.", plan: "Growth+" },
+      { name: "Citation building", body: "Monthly outreach to the roundups, review sites, comparisons and threads AI engines cite most, to get you mentioned there. Scale gets twice the outreach.", plan: "Growth+" },
+      { name: "Citation tracking", body: "See every time an engine cites you, right in your weekly report.", plan: "Growth+" },
       { name: "Original stat or data piece", body: "A small piece of original research about your category. Unique numbers attract citations.", plan: "Scale" },
     ],
   },

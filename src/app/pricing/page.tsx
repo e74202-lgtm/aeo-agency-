@@ -14,8 +14,8 @@ export const metadata: Metadata = {
 
 const terms = [
   {
-    q: "What's a placement?",
-    a: "A mention of your brand in a source AI engines read and trust, like an industry roundup, review site, comparison article or community thread. Placements are what get you named in answers.",
+    q: "What's citation building?",
+    a: "We reach out to the sources AI engines cite most in your category, like industry roundups, review sites, comparison articles and community threads, to get your brand mentioned there. Each mention we earn is a placement, and placements are what engines pick up and cite.",
   },
   {
     q: "What's a prompt run?",
@@ -37,7 +37,10 @@ const comparison: { label: string | string[]; from: number }[] = [
   { label: "AI visibility audit", from: 0 },
   { label: "Weekly prompt runs + \u201cNamed in X of 150\u201d report", from: 1 },
   { label: "Competitor alerts", from: 1 },
-  { label: ["Monthly placements", "Monthly placements", "4 placements a month", "10 placements a month"], from: 2 },
+  {
+    label: ["Citation building", "Citation building", "Citation building + tracking", "Citation building (2\u00d7 outreach) + tracking"],
+    from: 2,
+  },
   { label: "90-day refresh + monthly prompt tuning", from: 2 },
   { label: "Original data piece + fortnightly strategy calls", from: 3 },
 ]
@@ -119,6 +122,8 @@ export default function PricingPage() {
         <PricingModule plans={modulePlans} className="mt-10 bg-transparent px-0 py-0 md:px-0" />
 
         <p className="mt-8 text-center text-sm text-muted-foreground">
+          AI engines decide what they cite, so we commit to the work and show you the results every week.
+          <br />
           Prices in USD. Not sure which plan fits? Start with the free audit and we&apos;ll recommend one.
         </p>
       </section>

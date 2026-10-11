@@ -5,7 +5,7 @@ import { site } from "@/lib/site"
 
 const columns = [
   { title: "Company", links: site.nav },
-  { title: "Get started", links: [site.cta, { label: "FAQ", href: "/#faq" }] },
+  { title: "Get started", links: [site.cta, { label: "Contact", href: "/contact" }, { label: "FAQ", href: "/#faq" }] },
 ]
 
 export function SiteFooter() {

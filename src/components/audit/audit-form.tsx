@@ -173,6 +173,7 @@ export function AuditForm() {
 
       {/* Honeypot: hidden from people, bots fill it in and Formspree drops the submission */}
       <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
+      <input type="hidden" name="_subject" value="New free audit request" />
 
       {status === "error" && (
         <FormMessage>
@@ -209,7 +210,7 @@ export function AuditForm() {
   )
 }
 
-function FieldError({ id, children }: { id: string; children: React.ReactNode }) {
+export function FieldError({ id, children }: { id: string; children: React.ReactNode }) {
   return (
     <p id={id} className="flex items-start gap-1.5 text-sm text-destructive">
       <CircleAlert className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
@@ -218,7 +219,7 @@ function FieldError({ id, children }: { id: string; children: React.ReactNode })
   )
 }
 
-function FormMessage({ children }: { children: React.ReactNode }) {
+export function FormMessage({ children }: { children: React.ReactNode }) {
   return (
     <p role="alert" className="flex items-start gap-2 rounded-xl border border-destructive/30 bg-destructive/5 p-4 text-sm">
       <CircleAlert className="mt-0.5 size-4 shrink-0 text-destructive" aria-hidden="true" />

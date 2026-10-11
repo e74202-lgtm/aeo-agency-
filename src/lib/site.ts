@@ -32,7 +32,7 @@ export const steps = [
   },
   {
     title: "Earn the citations",
-    body: "AI trusts what others say about you. We get you into the reviews, roundups and forums that models pull their sources from.",
+    body: "AI trusts what others say about you. We go after the reviews, roundups and forums that models pull their sources from.",
   },
   {
     title: "Keep it fresh",
@@ -100,7 +100,7 @@ export const plans: Plan[] = [
       "“Named in X of 150 prompts” report",
       "Alert when a competitor moves in",
     ],
-    cta: { label: "Start with a free audit", href: "/audit" },
+    cta: { label: "Get started", href: "/contact?plan=monitor" },
   },
   {
     name: "Growth",
@@ -109,11 +109,12 @@ export const plans: Plan[] = [
     blurb: "Actively earn the mentions that get you recommended.",
     includesFrom: "Monitor",
     features: [
-      "4 placements a month",
+      "Citation building: monthly outreach to the sources AI cites most",
+      "Citation tracking in your weekly report",
       "90-day refresh on older placements",
       "Prompt list tuned every month",
     ],
-    cta: { label: "Start with a free audit", href: "/audit" },
+    cta: { label: "Get started", href: "/contact?plan=growth" },
     featured: true,
   },
   {
@@ -123,10 +124,18 @@ export const plans: Plan[] = [
     blurb: "Become the default answer in your category.",
     includesFrom: "Growth",
     features: [
-      "10 placements a month",
+      "Twice the citation-building outreach",
       "One original stat or data piece",
       "Fortnightly strategy call",
     ],
-    cta: { label: "Start with a free audit", href: "/audit" },
+    cta: { label: "Get started", href: "/contact?plan=scale" },
   },
+]
+
+// Choices on the contact form. Built from the paid plans, so prices stay in sync.
+export const planOptions = [
+  ...plans
+    .filter((plan) => plan.period)
+    .map((plan) => ({ value: plan.name.toLowerCase(), label: `${plan.name} (${plan.price}${plan.period})` })),
+  { value: "not-sure", label: "Not sure yet" },
 ]
