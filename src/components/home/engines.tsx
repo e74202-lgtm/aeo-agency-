@@ -7,7 +7,7 @@ export function Engines() {
         <p className="shrink-0 font-mono text-[11px] tracking-[0.18em] text-muted-foreground uppercase">
           Optimized for
         </p>
-        <ul className="flex flex-wrap items-center justify-center gap-x-7 gap-y-2 font-serif text-xl text-foreground/70 sm:text-2xl">
+        <ul className="flex flex-wrap items-center justify-center gap-x-7 gap-y-2 font-display text-lg font-semibold tracking-[-0.02em] text-foreground/60 sm:text-xl">
           {engines.map((name) => (
             <li key={name}>{name}</li>
           ))}

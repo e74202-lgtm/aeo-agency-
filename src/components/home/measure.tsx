@@ -23,7 +23,7 @@ export function Measure() {
       <div className="mx-auto grid max-w-6xl gap-16 px-5 py-24 md:py-32 lg:grid-cols-2 lg:items-center">
         <div className="reveal space-y-6">
           <SectionLabel>What we measure</SectionLabel>
-          <h2 className="font-serif text-5xl leading-[1] tracking-[-0.015em] text-balance md:text-6xl">
+          <h2 className="font-display text-4xl leading-[1.02] font-semibold tracking-[-0.04em] sm:text-5xl text-balance lg:text-6xl">
             Share of answer, <em className="text-signal">not guesswork.</em>
           </h2>
           <p className="max-w-md text-lg leading-relaxed text-muted-foreground">

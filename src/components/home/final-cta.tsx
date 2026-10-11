@@ -28,7 +28,7 @@ export function FinalCta() {
         <div className="relative grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:items-end">
           <div className="space-y-6">
             <p className="font-mono text-[11px] tracking-[0.18em] uppercase">Free AI visibility audit</p>
-            <h2 className="font-serif text-5xl leading-[0.95] tracking-[-0.015em] text-balance md:text-7xl">
+            <h2 className="font-display text-4xl leading-[0.98] font-semibold tracking-[-0.045em] sm:text-5xl text-balance md:text-7xl">
               Find out what AI says about you.
             </h2>
             <Button

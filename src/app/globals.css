@@ -10,7 +10,6 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-sans);
-  --font-serif: var(--font-instrument-serif);
   --font-display: var(--font-inter-tight);
   --color-signal: var(--signal);
   --color-signal-foreground: var(--signal-foreground);

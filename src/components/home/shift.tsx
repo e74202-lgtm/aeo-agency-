@@ -12,7 +12,7 @@ export function Shift() {
     <section className="mx-auto grid max-w-6xl gap-14 px-5 py-24 md:py-32 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-20">
       <div className="reveal space-y-6">
         <SectionLabel>The shift</SectionLabel>
-        <h2 className="font-serif text-5xl leading-[1] tracking-[-0.015em] text-balance md:text-6xl">
+        <h2 className="font-display text-4xl leading-[1.02] font-semibold tracking-[-0.04em] sm:text-5xl text-balance lg:text-6xl">
           Search gave ten links. AI gives <em className="text-signal">one answer.</em>
         </h2>
         <p className="max-w-md text-lg leading-relaxed text-muted-foreground">

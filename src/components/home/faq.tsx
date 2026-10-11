@@ -8,7 +8,7 @@ export function Faq() {
     <section className="mx-auto grid max-w-6xl gap-12 px-5 py-24 md:py-32 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
       <div className="space-y-6 lg:sticky lg:top-28 lg:self-start">
         <SectionLabel>FAQ</SectionLabel>
-        <h2 className="font-serif text-5xl leading-[1] tracking-[-0.015em] md:text-6xl">
+        <h2 className="font-display text-4xl leading-[1.02] font-semibold tracking-[-0.04em] sm:text-5xl lg:text-6xl">
           Straight answers.
         </h2>
         <p className="max-w-sm text-muted-foreground">Fitting, for an answer engine agency.</p>
