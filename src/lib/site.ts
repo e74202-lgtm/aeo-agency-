@@ -150,6 +150,7 @@ export const pages = [
   { path: "/services", title: "Services", description: "What we do: measure where AI recommends you, build citations, and keep your mentions fresh." },
   { path: "/how-it-works", title: "How it works", description: "How AI engines choose who to recommend, our process step by step, and a realistic timeline." },
   { path: "/pricing", title: "Pricing", description: "Free AI audit, then Monitor, Growth or Scale plans." },
+  { path: "/what-is-aeo", title: "What is AEO?", description: "A plain-English guide to Answer Engine Optimization: what it is, how AI chooses what to recommend, and how to do it." },
   { path: "/audit", title: "Free AI visibility audit", description: "Request a free audit of how AI engines answer for your brand." },
   { path: "/contact", title: "Contact", description: "Talk to us about the Monitor, Growth or Scale plan." },
 ]

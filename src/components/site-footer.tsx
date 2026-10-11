@@ -5,13 +5,14 @@ import { site } from "@/lib/site"
 
 const columns = [
   { title: "Company", links: site.nav },
-  { title: "Get started", links: [site.cta, { label: "Contact", href: "/contact" }, { label: "FAQ", href: "/#faq" }] },
+  { title: "Learn", links: [{ label: "What is AEO?", href: "/what-is-aeo" }, { label: "FAQ", href: "/#faq" }] },
+  { title: "Get started", links: [site.cta, { label: "Contact", href: "/contact" }] },
 ]
 
 export function SiteFooter() {
   return (
     <footer className="border-t">
-      <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 md:grid-cols-[1.5fr_1fr_1fr]">
+      <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 sm:grid-cols-2 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
         <div className="max-w-sm space-y-4">
           <Logo />
           <p className="text-sm leading-relaxed text-muted-foreground">{site.description}</p>

@@ -39,8 +39,10 @@ export function buildReport(opts: {
   run: RunResult
   changes: Changes
   history: Summary[]
+  /** Sample report for prospects: fictional client, illustrative data */
+  sample?: boolean
 }) {
-  const { client, run, changes, history } = opts
+  const { client, run, changes, history, sample } = opts
   const s = run.summary
   const date = new Date(`${run.date}T12:00:00`).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
 
@@ -105,6 +107,7 @@ export function buildReport(opts: {
   tr { break-inside: avoid; }
   .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   ul { margin: 0; padding-left: 18px; }
+  .demo.sample { border-color: #1a7a5a; background: #e3f3ec; color: #12583f; }
   .demo { margin-top: 20px; padding: 12px 16px; border: 1px dashed #c9a227; background: #fffbea; border-radius: 12px; font-weight: 600; }
   footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid #e7e1d8; color: #6b625b; font-size: 12px; }
   @media print { main { padding: 0; } .card, table { box-shadow: none; } }
@@ -120,7 +123,13 @@ export function buildReport(opts: {
     <div class="meta">Weekly AI visibility report<br>${esc(date)}</div>
   </header>
 
-  ${s.demo ? `<div class="demo">Demo data: some answers are samples because API keys aren't set. Don't send this report to a client.</div>` : ""}
+  ${
+    sample
+      ? `<div class="demo sample">Sample report: fictional brand and illustrative data, to show what a weekly report looks like. Not real results.</div>`
+      : s.demo
+        ? `<div class="demo">Demo data: some answers are samples because API keys aren't set. Don't send this report to a client.</div>`
+        : ""
+  }
 
   <h1>${esc(client.name)}</h1>
   <p class="muted">${s.promptCount} buyer questions asked on ${ENGINES.map((e) => ENGINE_LABEL[e]).join(" and ")}.</p>

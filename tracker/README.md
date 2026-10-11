@@ -30,6 +30,24 @@ npm run track -- --limit 5    # first 5 prompts only, for a cheap test
 npm run track -- --open       # open the report when done
 ```
 
+## Sample report for prospects
+
+```bash
+npm run track -- --sample --open
+```
+
+Creates a sample report from a **fictional** client (150 prompts, 8 weeks of trend) with a green "Sample report: illustrative data" banner. Free (no API calls), and never mixed into real client history. Saved in `tracker/reports/_sample/`. Show it on sales calls so prospects see exactly what they'd get.
+
+## Track Samael itself
+
+`tracker/clients/samael.json` tracks your own agency on 25 starter prompts. Once API keys are in, run it weekly:
+
+```bash
+npm run track -- samael --open
+```
+
+Add competitors you meet in sales to its `competitors` list, and update `website` when you connect your own domain. Your rising score becomes proof for future clients.
+
 Each run saves:
 - `tracker/results/<client>/<date>.json`: every answer (used for next week's comparison)
 - `tracker/reports/<client>/<date>.html`: the client report. Open it in a browser, **File → Print → Save as PDF**, then email it.

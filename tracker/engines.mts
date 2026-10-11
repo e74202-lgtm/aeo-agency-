@@ -18,8 +18,14 @@ export function hostname(url: string) {
   }
 }
 
-export async function askEngine(engine: Engine, prompt: string, client: ClientConfig, index: number): Promise<EngineReply> {
-  if (!engineIsLive(engine)) return { ...demoAnswer(engine, client, index), demo: true }
+export async function askEngine(
+  engine: Engine,
+  prompt: string,
+  client: ClientConfig,
+  index: number,
+  opts: { forceDemo?: boolean; brandChance?: number } = {},
+): Promise<EngineReply> {
+  if (opts.forceDemo || !engineIsLive(engine)) return { ...demoAnswer(engine, client, index, opts.brandChance), demo: true }
   const reply = engine === "chatgpt" ? await askChatGPT(prompt) : await askGemini(prompt)
   return { ...reply, demo: false }
 }
@@ -96,11 +102,11 @@ async function askGemini(prompt: string) {
 
 const DEMO_SOURCES = ["reviews.example", "industry-roundup.example", "forum.example", "comparison.example", "news.example"]
 
-function demoAnswer(engine: Engine, client: ClientConfig, index: number) {
+export function demoAnswer(engine: Engine, client: ClientConfig, index: number, brandChance = 0.3) {
   const rivals = client.competitors.length ? client.competitors.map((c) => c.name) : ["Brightline", "Northstar", "Keystone"]
   const pick = (n: number) => rivals[(index + n + (engine === "gemini" ? 1 : 0)) % rivals.length]
   // Random each run, so week-to-week changes show up in the report.
-  const includeBrand = Math.random() < 0.3
+  const includeBrand = Math.random() < brandChance
   const names = [...new Set([pick(0), pick(1), includeBrand ? client.name : pick(2)])]
   const text = `The names that come up most are ${names.join(", ")}. Compare a few options and check recent reviews.`
   const sources = [0, 1].map((n) => DEMO_SOURCES[(index + n + (engine === "gemini" ? 2 : 0)) % DEMO_SOURCES.length])

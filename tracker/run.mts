@@ -4,6 +4,7 @@
 //   npm run track -- northwind-books  run one client (the file name without .json)
 //   npm run track -- --limit 5        only the first 5 prompts (cheap test)
 //   npm run track -- --open           open the report(s) when done
+//   npm run track -- --sample --open  sample report for prospects (fictional client, free, not saved to history)
 //
 // Client settings, results and reports stay in tracker/clients, tracker/results and tracker/reports,
 // which are ignored by git so client data never reaches GitHub.
@@ -14,6 +15,7 @@ import path from "node:path"
 import { compare, isCited, isNamed, mentions, summarize } from "./analyze.mts"
 import { askEngine, engineIsLive } from "./engines.mts"
 import { buildReport } from "./report.mts"
+import { buildSampleReport } from "./sample.mts"
 import { ENGINES, type Answer, type ClientConfig, type RunResult } from "./types.mts"
 
 const ROOT = path.dirname(new URL(import.meta.url).pathname)
@@ -77,7 +79,7 @@ async function trackClient(slug: string) {
   const client = JSON.parse(await readFile(path.join(CLIENTS_DIR, `${slug}.json`), "utf8")) as ClientConfig
   validate(slug, client)
   const prompts = client.prompts.slice(0, limit ?? client.prompts.length)
-  const date = new Date().toISOString().slice(0, 10)
+  const date = new Date().toLocaleDateString("en-CA") // local YYYY-MM-DD
 
   const total = prompts.length * ENGINES.length
   let done = 0
@@ -137,6 +139,12 @@ async function trackClient(slug: string) {
 // --- main ----------------------------------------------------------------------------------
 
 async function main() {
+  if (flag("--sample")) {
+    const file = await buildSampleReport(ROOT)
+    if (flag("--open")) exec(`open "${file}"`)
+    return
+  }
+
   const available = (await readdir(CLIENTS_DIR).catch(() => [] as string[]))
     .filter((f) => f.endsWith(".json"))
     .map((f) => f.replace(/\.json$/, ""))
