@@ -40,3 +40,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# tracker: client data, results and reports never go to GitHub
+/tracker/clients/
+/tracker/results/
+/tracker/reports/
