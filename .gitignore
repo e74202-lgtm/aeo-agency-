@@ -45,3 +45,6 @@ next-env.d.ts
 /tracker/clients/
 /tracker/results/
 /tracker/reports/
+
+# business files (client tracker, signed contracts): never on GitHub
+/business/
