@@ -1,6 +1,6 @@
-# Weekly AI visibility tracker
+# Weekly AI visibility tracker + Radar
 
-Runs each client's buyer questions on ChatGPT and Gemini, tracks how often the client is named, and creates a report you can send.
+Runs each client's buyer questions on **ChatGPT, Gemini and Perplexity**, tracks how often the client is named and which pages each engine cites, drafts prompt lists, and builds an internal dashboard (Radar) across all clients.
 
 Client files, results and reports are **ignored by git**: client data never reaches GitHub.
 
@@ -19,7 +19,10 @@ Edit `tracker/clients/acme.json`:
 | `website` | Their domain, e.g. `acme.com` |
 | `aliases` | Other spellings people use (optional) |
 | `competitors` | Brands to track against, each with optional `aliases` |
-| `prompts` | The buyer questions (150 on Monitor). Tune them monthly on Growth. |
+| `category` | What they sell, in buyer words, e.g. `bookkeeping firm` (for the prompt generator) |
+| `audience` | Who they sell to, e.g. `["startups", "SaaS companies"]` (optional) |
+| `products` | Key products or services (optional) |
+| `prompts` | The buyer questions (150 on Monitor). Use the prompt generator below, then tune monthly on Growth. |
 
 ## Run it
 
@@ -29,6 +32,29 @@ npm run track -- acme         # one client
 npm run track -- --limit 5    # first 5 prompts only, for a cheap test
 npm run track -- --open       # open the report when done
 ```
+
+## Draft prompts for a client
+
+```bash
+npm run prompts -- acme              # ~150 prompts into tracker/clients/acme.prompts-draft.txt
+npm run prompts -- acme --count 30   # fewer, e.g. for a free audit
+npm run prompts -- acme --apply      # after editing the draft, copy it into acme.json
+```
+
+Grouped by buyer intent (best-of, audience, alternatives, comparisons, pricing, choosing). Without `OPENAI_API_KEY` it uses templates (free, usually fewer than 150); with it, an AI writes a more varied list. The client's own brand never appears in the questions. `--apply` backs up the old list first.
+
+## Radar: your internal dashboard
+
+```bash
+npm run radar -- --open
+```
+
+Builds `tracker/reports/_radar/radar-<date>.html` from saved results (no API calls, free):
+- **Exposure by engine:** every client's "named in" % on ChatGPT, Gemini and Perplexity, with change vs the previous run
+- **Opportunities:** pages AI cites often where the client is rarely named alongside: your outreach targets
+- **Cited pages by engine:** the top pages each engine cites, how often, and how often the client was named alongside
+
+Run `npm run track` first; Radar reads its results.
 
 ## Sample report for prospects
 
@@ -61,8 +87,9 @@ Put these in `.env.local` (never committed):
 ```
 OPENAI_API_KEY=...
 GEMINI_API_KEY=...
+PERPLEXITY_API_KEY=...
 ```
 
 Without them, the tracker uses **demo data** and the report says so in a yellow banner. Never send a demo report to a client.
 
-Cost: a 150-prompt client is 300 answers a week (150 × 2 engines). Web-search calls carry a per-call fee on top of normal usage, so check current API pricing and set spending limits in both accounts before adding clients.
+Cost: a 150-prompt client is 450 answers a week (150 × 3 engines). Web-search calls carry a per-call fee on top of normal usage, so check current API pricing and set spending limits in both accounts before adding clients.

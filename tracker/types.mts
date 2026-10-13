@@ -1,13 +1,17 @@
 // Shapes used across the tracker. Kept to plain, erasable TypeScript so Node can run it directly.
 
-export type Engine = "chatgpt" | "gemini"
+export type Engine = "chatgpt" | "gemini" | "perplexity"
 
-export const ENGINES: Engine[] = ["chatgpt", "gemini"]
+export const ENGINES: Engine[] = ["chatgpt", "gemini", "perplexity"]
 
 export const ENGINE_LABEL: Record<Engine, string> = {
   chatgpt: "ChatGPT",
   gemini: "Gemini (with Google Search)",
+  perplexity: "Perplexity",
 }
+
+/** A page an AI engine cited in its answer. */
+export type Source = { url: string; title: string; domain: string }
 
 /** One client's settings: tracker/clients/<slug>.json */
 export type ClientConfig = {
@@ -15,6 +19,12 @@ export type ClientConfig = {
   website: string
   /** Other ways people write the brand, e.g. "Northwind" for "Northwind Books" */
   aliases?: string[]
+  /** What they sell, in buyer words, e.g. "bookkeeping firm" (used by the prompt generator) */
+  category?: string
+  /** Who they sell to, e.g. ["startups", "SaaS companies"] (used by the prompt generator) */
+  audience?: string[]
+  /** Key products or services (used by the prompt generator) */
+  products?: string[]
   competitors: { name: string; aliases?: string[] }[]
   /** The buyer questions to track (150 on the Monitor plan) */
   prompts: string[]
@@ -32,8 +42,8 @@ export type Answer = {
   cited: boolean
   /** Competitors named in the answer */
   competitors: string[]
-  /** Domains the engine cited */
-  sources: string[]
+  /** Pages the engine cited (older result files stored plain domains instead) */
+  sources: Source[]
   /** Kept (shortened) so you can look back at what was said */
   text: string
 }

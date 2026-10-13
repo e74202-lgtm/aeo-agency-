@@ -1,11 +1,36 @@
 {
   "name": "Northwind Books",
   "website": "northwindbooks.com",
-  "aliases": ["Northwind"],
+  "aliases": [
+    "Northwind"
+  ],
+  "category": "bookkeeping firm",
+  "audience": [
+    "startups",
+    "SaaS companies",
+    "small businesses"
+  ],
+  "products": [
+    "outsourced bookkeeping",
+    "startup tax prep",
+    "investor-ready financial reporting"
+  ],
   "competitors": [
-    { "name": "Ledgerline" },
-    { "name": "Larkspur & Co.", "aliases": ["Larkspur"] },
-    { "name": "Brightline Bookkeeping", "aliases": ["Brightline"] }
+    {
+      "name": "Ledgerline"
+    },
+    {
+      "name": "Larkspur & Co.",
+      "aliases": [
+        "Larkspur"
+      ]
+    },
+    {
+      "name": "Brightline Bookkeeping",
+      "aliases": [
+        "Brightline"
+      ]
+    }
   ],
   "prompts": [
     "What's the best bookkeeping firm for startups?",

@@ -1,5 +1,5 @@
 import { hostname } from "./engines.mts"
-import { ENGINES, type Answer, type ClientConfig, type Summary } from "./types.mts"
+import { ENGINES, type Answer, type ClientConfig, type Source, type Summary } from "./types.mts"
 
 const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
 
@@ -19,9 +19,14 @@ export function isNamed(text: string, client: ClientConfig) {
   return mentions(text, brandNames(client)) || text.toLowerCase().includes(hostname(client.website))
 }
 
-export function isCited(sources: string[], client: ClientConfig) {
+export function isCited(sources: Source[], client: ClientConfig) {
   const own = hostname(client.website)
-  return sources.some((d) => d === own || d.endsWith(`.${own}`))
+  return sources.some((s) => s.domain === own || s.domain.endsWith(`.${own}`))
+}
+
+/** Older result files stored cited sources as plain domains; turn those into Source objects. */
+export function normalizeSources(sources: (Source | string)[]): Source[] {
+  return sources.map((s) => (typeof s === "string" ? { url: "", title: "", domain: s } : s))
 }
 
 export function summarize(client: ClientConfig, answers: Answer[]): Summary {
@@ -42,7 +47,12 @@ export function summarize(client: ClientConfig, answers: Answer[]): Summary {
 
   const own = hostname(client.website)
   const counts = new Map<string, number>()
-  for (const a of ok) for (const d of a.sources) if (d !== own) counts.set(d, (counts.get(d) ?? 0) + 1)
+  for (const a of ok) {
+    // Count each site once per answer
+    for (const d of new Set(normalizeSources(a.sources).map((s) => s.domain))) {
+      if (d !== own) counts.set(d, (counts.get(d) ?? 0) + 1)
+    }
+  }
   const topSources = [...counts.entries()]
     .sort((a, b) => b[1] - a[1])
     .slice(0, 10)

@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "track": "node --env-file-if-exists=.env.local tracker/run.mts"
+    "track": "node --env-file-if-exists=.env.local tracker/run.mts",
+    "prompts": "node --env-file-if-exists=.env.local tracker/prompts.mts",
+    "radar": "node tracker/radar.mts"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

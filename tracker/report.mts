@@ -59,7 +59,7 @@ export function buildReport(opts: {
   const competitorRows = s.competitors.length
     ? s.competitors
         .map(
-          (c) => `<tr><td>${esc(c.name)}</td><td class="num">${c.answers}</td><td>${bar(c.answers, s.perEngine.chatgpt.total + s.perEngine.gemini.total)}</td><td class="num">${
+          (c) => `<tr><td>${esc(c.name)}</td><td class="num">${c.answers}</td><td>${bar(c.answers, ENGINES.reduce((sum, e) => sum + (s.perEngine[e]?.total ?? 0), 0))}</td><td class="num">${
             changes.namedDelta === null ? "" : signed(changes.competitorDelta[c.name] ?? 0)
           }</td></tr>`,
         )
@@ -93,7 +93,7 @@ export function buildReport(opts: {
   .delta { display: inline-block; margin-top: 10px; font-size: 12px; padding: 3px 10px; border-radius: 99px; background: #f0ece6; }
   .delta.up { background: #e3f3ec; color: #1a7a5a; }
   .delta.down { background: #fbe9e7; color: #b42318; }
-  .engines { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+  .engines { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 16px; }
   .bar { height: 8px; background: #f0ece6; border-radius: 99px; overflow: hidden; min-width: 80px; }
   .bar div { height: 100%; background: #1a7a5a; border-radius: 99px; }
   .alerts { background: #fff7ed; border-color: #f5d9b8; }
@@ -148,7 +148,7 @@ export function buildReport(opts: {
 
   <div class="engines">
     ${ENGINES.map((e) => {
-      const p = s.perEngine[e]
+      const p = s.perEngine[e] ?? { named: 0, total: 0 }
       return `<div class="card"><div style="display:flex;justify-content:space-between"><strong>${ENGINE_LABEL[e]}</strong><span class="num">${p.named}/${p.total}</span></div>${bar(p.named, p.total)}</div>`
     }).join("")}
   </div>
@@ -197,7 +197,7 @@ export function buildReport(opts: {
   </table>
 
   <footer>
-    Answers come from the official ChatGPT and Gemini APIs with web search turned on. AI answers vary from run to run and can
+    Answers come from the official ${ENGINES.map((e) => ENGINE_LABEL[e].split(" ")[0]).join(", ")} APIs with web search turned on. AI answers vary from run to run and can
     differ slightly from what people see in the apps, so week-over-week trends matter more than any single answer.
     ${s.failed ? `${s.failed} answer${s.failed === 1 ? "" : "s"} failed to load this week and ${s.failed === 1 ? "is" : "are"} excluded.` : ""}
     <br>Prepared by ${AGENCY}.
